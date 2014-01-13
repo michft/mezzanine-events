@@ -25,8 +25,8 @@ setup(name='mezzanine-events',
 	],
 	install_requires=[
 	    'mezzanine',
-		'icalendar==3.0.1b2',
-		'geopy==0.95.1',
+		'icalendar>=3.0.1b2',
+		'geopy>=0.95.1',
 		'pytz',
 	],
 	classifiers = [
