@@ -1,18 +1,20 @@
+import codecs
 from setuptools import setup, find_packages
 from mezzanine_events import __version__
 import subprocess
 
-def get_long_desc():
-	"""Use Pandoc to convert the readme to ReST for the PyPI."""
-	try:
-		return subprocess.check_output(['pandoc', '-f', 'markdown', '-t', 'rst', 'README.mdown'])
-	except:
-		print "WARNING: The long readme wasn't converted properly"
+#def get_long_desc():
+#	"""Use Pandoc to convert the readme to ReST for the PyPI."""
+#	try:
+#		return subprocess.check_output(['pandoc', '-f', 'markdown', '-t', 'rst', 'README.mdown'])
+#	except:
+#		print "WARNING: The long readme wasn't converted properly"
+### manually worked around bad pandoc call (problem with unicode)
 
 setup(name='mezzanine-events',
 	version=__version__,
 	description='Event pages for the Mezzanine CMS',
-	long_description=get_long_desc(),
+	long_description=codecs.open('README.rst', encoding='utf-8').read(),
 	author='Adam Brenecki',
 	author_email='abrenecki@sbtc.org.au',
 	url='https://github.com/stbarnabas/mezzanine-events',
