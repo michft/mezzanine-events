@@ -2,6 +2,7 @@ mezzanine-events
 ================
 
 This plugin gives you an "Event" page type for your Mezzanine sites.
+Fork from St Barnabas original to allow Python3 usage.
 
 Features
 --------
@@ -148,6 +149,8 @@ Settings
 
 License
 -------
+
+Copyright (C) 2014 Michael Tomkins
 
 Copyright (C) 2012 St Barnabas Theological College
 

@@ -1,6 +1,6 @@
 # mezzanine-events
 
-This plugin gives you an "Event" page type for your Mezzanine sites.
+This plugin gives you an "Event" page type for your Mezzanine sites. Fork from St Barnabas original to allow Python3 usage.
 
 ## Features
 
@@ -79,6 +79,8 @@ In practice, most clients *import* downloaded iCalendar files into an existing c
 * `MZEVENTS_TIME_ZONE` - The time zone that the event dates and times are in. Either this or the `TIME_ZONE` setting needs to be set.
 
 ## License
+
+Copyright (C) 2014 Michael Tomkins
 
 Copyright (C) 2012 St Barnabas Theological College
 
