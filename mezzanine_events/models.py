@@ -3,7 +3,7 @@ from mezzanine.pages.models import Page
 from mezzanine.core.models import RichText
 from django.core.exceptions import ValidationError
 from geopy.geocoders import GoogleV3 as GoogleMaps
-from geopy.geocoders.googlev3 import GQueryError
+from geopy.geocoders.googlev3 import GeocoderQueryError
 from django.contrib.sites.models import Site
 from datetime import timedelta, datetime as dt
 from mezzanine.utils.sites import current_site_id
@@ -48,7 +48,7 @@ class Event(Page, RichText):
 			g = GoogleMaps(domain=settings.MZEVENTS_GOOGLE_MAPS_DOMAIN)
 			try:
 				location, (lat, lon) = g.geocode(self.mappable_location.encode('utf-8'))
-			except GQueryError as e:
+                        except GeocoderQueryError as e:
 				raise ValidationError("The mappable location you specified could not be found on {service}: \"{error}\" Try changing the mappable location, removing any business names, or leaving mappable location blank and using coordinates from getlatlon.com.".format(service="Google Maps", error=e.message))
 			except ValueError as e:
 				raise ValidationError("The mappable location you specified could not be found on {service}: \"{error}\" Try changing the mappable location, removing any business names, or leaving mappable location blank and using coordinates from getlatlon.com.".format(service="Google Maps", error=e.message))
