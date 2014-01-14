@@ -48,19 +48,19 @@ class Event(Page, RichText):
 			g = GoogleMaps(domain=settings.MZEVENTS_GOOGLE_MAPS_DOMAIN)
 			try:
 				location, (lat, lon) = g.geocode(self.mappable_location.encode('utf-8'))
-                        except GeocoderQueryError as e:
+            except GeocoderQueryError as e:
 				raise ValidationError("The mappable location you specified could not be found on {service}: \"{error}\" Try changing the mappable location, removing any business names, or leaving mappable location blank and using coordinates from getlatlon.com.".format(service="Google Maps", error=e.message))
 			except ValueError as e:
 				raise ValidationError("The mappable location you specified could not be found on {service}: \"{error}\" Try changing the mappable location, removing any business names, or leaving mappable location blank and using coordinates from getlatlon.com.".format(service="Google Maps", error=e.message))
 			self.mappable_location = location
 			self.lat = lat
 			self.lon = lon
-		
+
 	def save(self, *args, **kwargs):
 		# determine whether the page needs to be hidden
 		# this has to be done here because we don't have access to the parent in clean()
 		hide_page = False
-				
+
 		if self.parent is not None:
 			hide_page = isinstance(self.parent.get_content_model(), EventContainer) and self.parent.get_content_model().hide_children
 		
